@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SelectedItemStyling.WithStyle">
+
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<Style TargetType="Grid" x:Key="CollectionViewItemStyle">
+				<Setter Property="VisualStateManager.VisualStateGroups">
+					<Setter.Value>
+						<VisualStateGroupList>
+							<VisualStateGroup Name="CommonStates">
+								<VisualState Name="Normal" />
+								<VisualState Name="Selected">
+									<VisualState.Setters>
+										<Setter Property="BackgroundColor" Value="Green" />
+										<Setter TargetName="Title" Property="Label.TextColor" Value="White"/>
+										<Setter TargetName="Description" Property="Label.TextColor" Value="White"/>
+									</VisualState.Setters>
+								</VisualState>
+							</VisualStateGroup>
+						</VisualStateGroupList>
+					</Setter.Value>
+				</Setter>
+			</Style>
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	
+    <ContentPage.Content>
+		<StackLayout Margin="5,40,5,0" Spacing="30">
+
+			<Label Text="Here we have two CollectionViews, each using the same style to handle the 'Selected' appearance."/>
+
+			<CollectionView ItemsSource="{Binding Items}" SelectionMode="Single">
+				<CollectionView.ItemTemplate>
+					<DataTemplate>
+						<Grid Style="{StaticResource CollectionViewItemStyle}">
+
+							<Grid.RowDefinitions>
+								<RowDefinition></RowDefinition>
+								<RowDefinition></RowDefinition>
+							</Grid.RowDefinitions>
+
+							<Label x:Name="Title" Text="{Binding Title}" FontSize="Large"></Label>
+							<Label x:Name="Description" Text="{Binding Description}" Grid.Row="1"></Label>
+						</Grid>
+					</DataTemplate>
+				</CollectionView.ItemTemplate>
+			</CollectionView>
+
+
+			<CollectionView ItemsSource="{Binding Items}" SelectionMode="Single">
+				<CollectionView.ItemTemplate>
+					<DataTemplate>
+						<Grid BackgroundColor="Beige" Style="{StaticResource CollectionViewItemStyle}">
+
+							<Grid.RowDefinitions>
+								<RowDefinition></RowDefinition>
+								<RowDefinition></RowDefinition>
+							</Grid.RowDefinitions>
+
+							<Label x:Name="Title" HorizontalTextAlignment="Center" TextColor="Black" 
+								   Text="{Binding Title}" FontSize="Medium"></Label>
+							<Label x:Name="Description" HorizontalTextAlignment="Center" TextColor="Red" 
+								   Text="{Binding Description}" FontSize="Small" Grid.Row="1"></Label>
+						</Grid>
+					</DataTemplate>
+				</CollectionView.ItemTemplate>
+			</CollectionView>
+		</StackLayout>
+    </ContentPage.Content>
+</ContentPage>

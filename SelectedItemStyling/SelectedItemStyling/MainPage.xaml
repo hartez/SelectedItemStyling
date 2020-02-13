@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SelectedItemStyling.MainPage">
+
+    <StackLayout Margin="5,40,5,0">
+
+		<Label Text="This version sets the VisualStates directly on the DataTemplate"/>
+
+		<CollectionView ItemsSource="{Binding Items}" SelectionMode="Single">
+			<CollectionView.ItemTemplate>
+				<DataTemplate>
+					<Grid>
+
+						<VisualStateManager.VisualStateGroups>
+							<VisualStateGroup Name="CommonStates">
+								<VisualState Name="Normal" />
+								<VisualState Name="Selected">
+									<VisualState.Setters>
+										<Setter Property="BackgroundColor" Value="Yellow" />
+										<Setter TargetName="Title" Property="Label.FontAttributes" Value="Bold"/>
+										<Setter TargetName="Description" Property="Label.FontAttributes" Value="Bold"/>
+									</VisualState.Setters>
+								</VisualState>
+							</VisualStateGroup>
+						</VisualStateManager.VisualStateGroups>
+
+						<Grid.RowDefinitions>
+							<RowDefinition></RowDefinition>
+							<RowDefinition></RowDefinition>
+						</Grid.RowDefinitions>
+
+						<Label x:Name="Title" Text="{Binding Title}" FontSize="Large"></Label>
+						<Label x:Name="Description" Text="{Binding Description}" Grid.Row="1"></Label>
+					</Grid>
+				</DataTemplate>
+			</CollectionView.ItemTemplate>
+		</CollectionView>
+
+		
+	</StackLayout>
+
+</ContentPage>

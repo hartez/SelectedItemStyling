@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SelectedItemStyling.ConvenienceMethod">
+    <ContentPage.Content>
+		<StackLayout Margin="5,40,5,0">
+
+			<Label Text="This version uses a helper method to just set the selected background color"/>
+
+			<CollectionView x:Name="MyCollectionView" ItemsSource="{Binding Items}" SelectionMode="Single">
+				<CollectionView.ItemTemplate>
+					<DataTemplate>
+						<Grid>
+							<Grid.RowDefinitions>
+								<RowDefinition></RowDefinition>
+								<RowDefinition></RowDefinition>
+							</Grid.RowDefinitions>
+
+							<Label x:Name="Title" Text="{Binding Title}" FontSize="Large"></Label>
+							<Label x:Name="Description" Text="{Binding Description}" Grid.Row="1"></Label>
+						</Grid>
+					</DataTemplate>
+				</CollectionView.ItemTemplate>
+			</CollectionView>
+
+
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>
