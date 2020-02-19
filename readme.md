@@ -4,6 +4,8 @@ This repo shows a few different ways you can style the currently selected item(s
 
 "Selected" is a VisualState which is set on the root element of any currently selected items. This allows for the appearance of the item and all of its content to be changed when the item is selected. 
 
+Here is a change
+
 This repo contains examples of four different ways to set the appearance of selected items:
 
 - Directly on the ItemTemplate in XAML
